@@ -145,8 +145,8 @@ public class MemoRepositoryTests {
 
     @Test
     public void testGetListWithQuery(){
-        Pageable pageable = PageRequest.of(0,10, Sort.by("mno").descending());
-        Page<Memo> result= memoRepository.getListWithQuery(32L, pageable);
+        Pageable pageable = PageRequest.of(0, 50, Sort.by("mno").ascending());
+        Page<Memo> result = memoRepository.getListWithQuery(32L, pageable);
         result.get().forEach(
                 memo -> System.out.println(memo)
         );

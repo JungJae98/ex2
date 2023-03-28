@@ -35,7 +35,8 @@ public interface MemoRepository extends JpaRepository<Memo, Long> {
     @Query("update Memo m set m.memoText = :#{#param.memoText} where m.mno = :#{#param.mno} ")
     int updateMemoText2(@Param("param") Memo memo );
 
-    @Query(value = "select m from Memo m where m.mno > :mno",
+    @Query(value = "select m from Memo m where m.mno > :mno" ,
             countQuery = "select count(m) from Memo m where m.mno > :mno")
-    Page<Memo> getListWithQuery();
+    Page<Memo> getListWithQuery(@Param("mno")Long mno, Pageable pageable);
+
 }
